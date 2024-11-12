@@ -26,10 +26,7 @@ try:
                  from time import sleep
                  from datetime import datetime
                  import phonenumbers as pnumb
-                 from phonenumbers import parse
-                 from phonenumbers import geocoder
-                 from phonenumbers import carrier
-                 from phonenumbers import timezone
+                 from phonenumbers import geocoder, carrier, timezone, parse
                  from instaloader import instaloader
 except ModuleNotFoundError:
                  print (f"Please Install Module First")
@@ -92,7 +89,7 @@ def start():
         V = input(f"      {BLUE}Choose\033[0m: ")
         if V == "1": ### chose 1
                     number = input(f"{WHITE}Enter Number {NORMAL}({GREEN}Without +){WHITE} :{CRED2}➤ ")
-                    parsing = parse(number)
+                    parsing = pnumb.parse(number, "ID")
                     loc = geocoder.description_for_number(parsing,"id")
                     isp = carrier.name_for_number(parsing,"id")
                     tz = timezone.time_zones_for_number(parsing)
